@@ -12,3 +12,10 @@ Simple URL Shortener based on Symfony framework
 - [ ] User Control panel
 - [ ] RESTapi
 - [ ] Update Hash algorithm (get rid of collisions)
+
+## Screenshots
+### Home Page
+![Home Page](screens/home_page.png)
+
+### Short link
+![New Link](screens/generated_link.png)
