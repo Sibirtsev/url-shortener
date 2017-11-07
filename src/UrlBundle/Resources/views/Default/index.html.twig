@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+    <div class="col-md-6">
+        <h1><span>Welcome to</span> Url Shortener</h1>
+
+        <p>This project has built on Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</p>
+        <p>This is demo site for checking base functions:</p>
+        <ul>
+            <li><a href="{{ path('create') }}">Create new short link</a></li>
+            <li>Redirect from short link to target link</li>
+            <li>Manage collection of links</li>
+        </ul>
+    </div>
+
+    <div class="col-md-6">
+        <h2>Short new link</h2>
+        {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+
+        <input type="submit" value="Submit" class="btn"/>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+

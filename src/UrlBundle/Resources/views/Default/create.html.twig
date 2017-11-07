@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+    {% if (url.shortUrl == '') %}
+
+    <h2>Short new link</h2>
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+
+    <input type="submit" value="Submit" class="btn"/>
+    {{ form_end(form) }}
+
+    {% else %}
+    <h2>Your link created</h2>
+    <div class="text-center">
+        <div id="slug">{{ url('redirect', {'short': url.shortUrl}) }}</div>
+        <button class="btn btn-success copy" data-text="{{ url('redirect', {'short': url.shortUrl}) }}">Copy</button>
+    </div>
+    {% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/app.js') }}"></script>
+{% endblock %}
