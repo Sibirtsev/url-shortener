@@ -4,6 +4,8 @@
 namespace UrlBundle\Service;
 
 
+use UrlBundle\Entity\Url;
+
 class HttpGetter
 {
     /**
@@ -16,14 +18,15 @@ class HttpGetter
      */
     private $_response;
 
+
     /**
-     * HttpGetter constructor.
-     *
-     * @param $url
+     * @param Url $url
+     * @return HttpGetter
      */
-    public function __construct($url)
+    public function setUrl(Url $url) : HttpGetter
     {
-        $this->_url = $url;
+        $this->_url = $url->getUrl();
+        return $this;
     }
 
     /**

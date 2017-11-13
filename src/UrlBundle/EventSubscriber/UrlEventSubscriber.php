@@ -46,7 +46,7 @@ class UrlEventSubscriber implements EventSubscriberInterface
 
         $visit = new Visit();
         $visit->setUrl($event->getUrl())
-            ->setIp(ip2long($clientIp))
+            ->setIp($clientIp)
             ->setVisited(new \DateTime());
         $this->em->persist($visit);
         $this->em->flush();

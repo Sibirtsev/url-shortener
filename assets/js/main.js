@@ -11,14 +11,15 @@ $(document).ready(function() {
 });*/
 
 function copyToClipboard(text) {
-    var $temp = $("<input>");
-    $("body").append($temp);
+    var $temp = $('<input>');
+    $('body').append($temp);
     $temp.val(text).select();
-    document.execCommand("copy");
+    document.execCommand('copy');
     $temp.remove();
 }
 
 $('.copy').bind('click', function (event) {
     var text = $(event.target).data('text');
     copyToClipboard(text);
+    $(event.target).html('Copied');
 });

@@ -53,3 +53,16 @@ services:
         arguments:
             - "@doctrine.orm.entity_manager"
             - "@request_stack"
+
+    url_bundle.get_info.service:
+        public: true
+        class: UrlBundle\Service\HttpGetter
+
+    url_bundle.screenshotter.service:
+        public: true
+        class: UrlBundle\Service\Screenshotter
+        arguments:
+            - "@twig.loader"
+            - "%kernel.root_dir%/../web/screens"
+            - "%kernel.root_dir%/../var/cache/screenshotter"
+            - 1024

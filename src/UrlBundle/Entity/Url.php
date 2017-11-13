@@ -25,6 +25,14 @@ class Url
     private $id;
 
     /**
+     * @var UrlInfo
+     *
+     * @ORM\OneToOne(targetEntity="UrlBundle\Entity\UrlInfo", cascade={"persist"})
+     * @ORM\JoinColumn(name="url_info_id", referencedColumnName="id")
+     */
+    private $info;
+
+    /**
      * @var string
      * @Assert\NotBlank
      * @UrlAssert\UrlFormat
@@ -56,6 +64,24 @@ class Url
         return $this->id;
     }
 
+    /**
+     * @return UrlInfo
+     */
+    public function getInfo()
+    {
+        return $this->info;
+    }
+
+    /**
+     * @param UrlInfo $info
+     * @return $this
+     */
+    public function setInfo(UrlInfo $info)
+    {
+        $this->info = $info;
+
+        return $this;
+    }
 
     /**
      * Set url

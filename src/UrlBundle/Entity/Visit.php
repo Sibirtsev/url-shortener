@@ -30,9 +30,9 @@ class Visit
     private $url;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="ip", type="integer", options={"unsigned":true})
+     * @ORM\Column(name="ip", type="string", length=15)
      */
     private $ip;
 
@@ -76,7 +76,7 @@ class Visit
     /**
      * Set ip
      *
-     * @param integer $ip
+     * @param string $ip
      *
      * @return Visit
      */
@@ -90,7 +90,7 @@ class Visit
     /**
      * Get ip
      *
-     * @return int
+     * @return string
      */
     public function getIp()
     {

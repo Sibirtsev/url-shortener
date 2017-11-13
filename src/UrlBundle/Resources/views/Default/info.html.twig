@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Info for {{ url.shortUrl }}{% endblock %}
+
+{% block content %}
+
+    <h2>Info about short url {{ url.shortUrl }}</h2>
+
+    <dl class="dl-horizontal">
+        <dt>Short link</dt>
+        <dd><a href="{{ url('redirect', {'short': url.shortUrl}) }}" target="_blank">{{ url('redirect', {'short': url.shortUrl}) }}</a></dd>
+
+        <dt>Full link</dt>
+        <dd><a href="{{ url.url }}">{{ url.url }}</a></dd>
+
+        <dt>Created at</dt>
+        <dd>{{ url.created | date('H:i:s m/d/Y')}}</dd>
+
+        <dt>Server IP</dt>
+        <dd>{{ url.info.ip }}&nbsp;<small><a href="https://www.whois.com/whois/{{ url.info.ip }}" target="_blank">whois</a></small></dd>
+
+        <dt>Page title</dt>
+        <dd>{{ url.info.title }}</dd>
+
+        <dt>Page description</dt>
+        <dd>{{ url.info.description }}</dd>
+
+        <dt>Capture time</dt>
+        <dd>{{ url.info.created | date('H:i:s m/d/Y')}}</dd>
+    </dl>
+
+    <h4>Screenshot</h4>
+    <img src="/screens/{{ url.info.screenshot }}" />
+
+{% endblock %}

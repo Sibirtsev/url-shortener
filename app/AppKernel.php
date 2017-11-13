@@ -18,6 +18,8 @@ class AppKernel extends Kernel
 
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
 
+            new Cron\CronBundle\CronCronBundle(),
+
             new AppBundle\AppBundle(),
             new UrlBundle\UrlBundle(),
         ];

@@ -17,5 +17,8 @@
 /web/bundles/
 composer.phar
 .idea/
-.web-server-pid
 node_modules/
+bin/phantomjs
+.DS_Store
+/web/screens/
+!/web/screens/.gitkeep

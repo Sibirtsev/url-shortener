@@ -2,6 +2,7 @@
 
 namespace UrlBundle\Repository;
 
+
 /**
  * UrlRepository
  *
@@ -10,4 +11,36 @@ namespace UrlBundle\Repository;
  */
 class UrlRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getInfo($hash)
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+
+        $q  = $qb->select(['u', 'ui'])
+            ->from('UrlBundle:Url', 'u')
+            ->leftJoin('u.info', 'ui')
+            ->where('u.shortUrl = :short')
+            ->setParameter('short', $hash)
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $q->getSingleResult();
+    }
+
+
+    public function getSiteWithoutInfo()
+    {
+        $em = $this->getEntityManager();
+        $qb = $em->createQueryBuilder();
+
+        $q  = $qb->select(['u'])
+            ->from('UrlBundle:Url', 'u')
+            ->leftJoin('u.info', 'ui')
+            ->where("ui.id IS NULL")
+            ->orderBy('u.created', 'asc')
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $q->getSingleResult();
+    }
 }
