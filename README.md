@@ -34,3 +34,6 @@ Simple URL Shortener based on Symfony framework
 
 ### Info Page
 ![Info page](screens/info_page.png)
+
+#### Info Page without additional info
+![Info page](screens/empty_info.png)

@@ -16,20 +16,33 @@
         <dt>Created at</dt>
         <dd>{{ url.created | date('H:i:s m/d/Y')}}</dd>
 
-        <dt>Server IP</dt>
-        <dd>{{ url.info.ip }}&nbsp;<small><a href="https://www.whois.com/whois/{{ url.info.ip }}" target="_blank">whois</a></small></dd>
+        {% if (url.info) %}
+            <dt>Server IP</dt>
+            <dd>{{ url.info.ip }}&nbsp;<small><a href="https://www.whois.com/whois/{{ url.info.ip }}" target="_blank">whois</a></small></dd>
 
-        <dt>Page title</dt>
-        <dd>{{ url.info.title }}</dd>
+            <dt>Page title</dt>
+            <dd>{{ url.info.title }}</dd>
 
-        <dt>Page description</dt>
-        <dd>{{ url.info.description }}</dd>
+            <dt>Page description</dt>
+            <dd>{{ url.info.description }}</dd>
 
-        <dt>Capture time</dt>
-        <dd>{{ url.info.created | date('H:i:s m/d/Y')}}</dd>
+            <dt>Capture time</dt>
+            <dd>{{ url.info.created | date('H:i:s m/d/Y')}}</dd>
+        {% endif %}
     </dl>
 
+{% if (url.info) %}
     <h4>Screenshot</h4>
     <img src="/screens/{{ url.info.screenshot }}" />
+{% else %}
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">Additional info has not been available yet</h3>
+        </div>
+        <div class="panel-body">
+            Additional info (e.g. page information and screenshot) will be available later.
+        </div>
+    </div>
+{% endif %}
 
 {% endblock %}

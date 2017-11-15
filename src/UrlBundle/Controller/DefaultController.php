@@ -72,9 +72,10 @@ class DefaultController extends Controller
      * @param string $short
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function infoAction(Request $request, string $short)
+    public function infoAction(string $short)
     {
         $repository = $this->getDoctrine()->getRepository(Url::class);
+        /** @var Url $url */
         $url = $repository->getInfo($short);
 
         return $this->render('UrlBundle:Default:info.html.twig', [
